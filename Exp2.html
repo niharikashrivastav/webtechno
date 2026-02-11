@@ -1,86 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table</title>
+<meta charset="UTF-8">
+<title>Student Portfolio</title>
+
+<style>
+body{
+    background-color:pink;
+    font-family:Arial, sans-serif;
+    margin:0;
+    padding:30px;
+}
+
+.section{
+    text-align:left;
+    max-width:700px;
+}
+
+hr{
+    border:2px solid purple;
+    margin:15px 0;
+}
+
+img{
+    display:block;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+table{
+    border-collapse:collapse;
+    margin:20px 0;
+    background:white;
+}
+
+th,td{
+    padding:10px 15px;
+    text-align:center;
+}
+
+.box{
+    width:300px;
+    margin:40px auto;
+    padding:20px;
+    border:3px solid #d63384;
+    border-radius:20px;
+    background:white;
+    text-align:center;
+}
+
+.box input{
+    width:95%;
+    padding:6px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+.box button{
+    background:#d63384;
+    color:white;
+    padding:8px 15px;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+marquee{
+    font-size:22px;
+    font-weight:bold;
+    color:purple;
+    margin-bottom:20px;
+}
+</style>
+
 </head>
-<body bgcolor="pink">
 
-    <marquee>
-        <h1><font color="purple">TABLE</font></h1>
-    </marquee>
+<body>
 
-    <br>
-<style>.summary{color : purple}</style>
-<h2 class ="summary">Summary</h2>
-<hr color = "lilac">
-<table border = "1" cellpadding="10">
-    <thead>
-        <th>id</th>
-        <th>Name</th>
-        <th>AIM</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>03</td>
-            <td>Abhishek</td>
-            <td>Software Developer</td>
-        </tr>
-        <tr>
-            <td>04</td>
-            <td>Niharika</td>
-            <td>Software Engineer</td>
-        </tr>
-        <tr>
-            <td>03</td>
-            <td>Pihu</td>
-            <td> Software Developer</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <td>summary</td>
-        <td colspan = "2">3</td>
-    </tfoot>
+<marquee>Student Portfolio</marquee>
 
+<div class="section">
+
+<h2>About Me</h2>
+<hr>
+
+<p>
+<b>Name:</b> Niharika Shrivastav <br>
+<b>Course:</b> B.Tech CSE <br>
+<i>I'm learning to make amazing websites.</i>
+</p>
+
+<img src="https://www.thesprucepets.com/thmb/iDUukmHiOhz2Xoo4xMWrW2PpGUU=/3300x0/filters:no_upscale():strip_icc()/white-hotot-rabbit-eating-grass-509265984-5c0da06546e0fb0001366ac0.jpg" width="200">
+
+<h2>My Skills</h2>
+<hr>
+
+<ul>
+<li>HTML 😊</li>
+<li>CSS</li>
+<li>Java</li>
+</ul>
+
+<h2>Contact</h2>
+<hr>
+
+<p>
+<b>Email:</b> niharika.shrivastva1@gmail.com <br>
+<b>Website:</b> www.ww.com <br>
+<b>LinkedIn:</b>
+<a href="https://in.linkedin.com/" target="_blank">Click Here!</a>
+</p>
+
+<h2>Summary Table</h2>
+<hr>
+
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>AIM</th>
+</tr>
+<tr><td>03</td><td>Abhishek</td><td>Software Developer</td></tr>
+<tr><td>04</td><td>Niharika</td><td>Software Engineer</td></tr>
+<tr><td>05</td><td>Pihu</td><td>Software Developer</td></tr>
+<tr><td>Summary</td><td colspan="2">3 Students</td></tr>
 </table>
-<table border = "1"  cellspacing="2"cellpadding="10">
-  <tr>
-    <th rowspan="2">Student</th>
-    <th colspan="3">Subjects</th>
-  </tr>
-  <tr>
-    <th>SE</th>
-    <th>WT</th>
-    <th>TOC</th>
-  </tr>
-  <tr>
-    <td>Niharika</td>
-    <td>85</td>
-    <td>90</td>
-    <td>88</td>
-  </tr>
-   <tr>
-    <td>Abhishek</td>
-    <td>90</td>
-    <td>90</td>
-    <td>88</td>
-  </tr>
-   <tr>
-    <td>Pihu</td>
-    <td>88</td>
-    <td>90</td>
-    <td>85</td>
-  </tr>
-   <tr>
-    <td>Riya</td>
-    <td>85</td>
-    <td>92</td>
-    <td>88</td>
-  </tr>
+
+<table border="1">
+<tr>
+<th rowspan="2">Student</th>
+<th colspan="3">Subjects</th>
+</tr>
+<tr>
+<th>SE</th>
+<th>WT</th>
+<th>TOC</th>
+</tr>
+<tr><td>Niharika</td><td>85</td><td>90</td><td>88</td></tr>
+<tr><td>Abhishek</td><td>90</td><td>90</td><td>88</td></tr>
+<tr><td>Pihu</td><td>88</td><td>90</td><td>85</td></tr>
+<tr><td>Riya</td><td>85</td><td>92</td><td>88</td></tr>
 </table>
+
+</div>
+
+<div class="box">
+
+<h2>Registration Form</h2>
+
+<form>
+Name:<br>
+<input type="text" required><br><br>
+
+Email:<br>
+<input type="email" required><br><br>
+
+Password:<br>
+<input type="password" required><br><br>
+
+DOB:<br>
+<input type="text" placeholder="DD/MM/YY" required><br><br>
+
+Gender:
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+<br><br>
+
+<button type="submit">Submit</button>
+</form>
+
+</div>
 
 </body>
 </html>
+
+
 
 
