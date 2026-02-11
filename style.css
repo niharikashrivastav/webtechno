@@ -8,11 +8,20 @@
 body {
   background-color: #fff0f6;
   color: #333;
+
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
+
 
 header {
   background-color: #d63384;
   padding: 15px;
+  width: 100%;
+  text-align: center;
 }
 
 nav a {
@@ -29,9 +38,12 @@ nav a:hover {
   text-decoration: underline;
 }
 
+
 .container {
   padding: 40px;
-  text-align: right;
+  text-align: center;
+  max-width: 900px;   
+  width: 100%;
 }
 
 h1 {
@@ -51,32 +63,28 @@ h2 {
 }
 
 .container p {
-  color: #333;
   font-size: 18px;
   margin: 8px 0;
 }
 
+
 .gallery img {
-  width: 200px;
-  height: 150px;
+  width: 250px;   
+  height: auto;
   margin: 10px;
   border-radius: 8px;
-  border: 3px solid #00000000;
 }
+
+
+
 
 footer {
   background-color: #d63384;
-  color: rgba(255, 255, 255, 0);
+  color: white;
   text-align: center;
   padding: 10px;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  margin-top: auto;
 }
-    
-        img {
-            width: 150%; 
-            height: auto; 
-        }
 
 
