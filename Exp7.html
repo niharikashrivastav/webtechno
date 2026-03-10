@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Students Information and Market Products</title>
+
+<style>
+
+body{
+font-family: Arial;
+background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+padding:20px;
+min-height:100vh;
+margin:0;
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+.container{
+background:rgb(199, 168, 232);
+padding:20px;
+margin:20px auto;
+width:80%;
+border-radius:8px;
+box-shadow:0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+button{
+padding:8px 12px;
+margin:5px;
+border:none;
+background:#000000;
+color:white;
+border-radius:4px;
+cursor:pointer;
+}
+
+button:hover{
+background:#222;
+}
+
+input,select{
+padding:6px;
+margin:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+display:none;
+background:white;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:8px;
+text-align:center;
+}
+tr:nth-child(even){
+background:#f9f9f9;
+}
+
+th{
+background:#ddd;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Student Information -->
+
+<div class="container">
+
+<h2>Student Information</h2>
+
+<input type="text" id="studentSearch" placeholder="Search student">
+<select id="courseFilter">
+<option value="all">All Courses</option>
+<option value="CSE">CSE</option>
+<option value="ECE">ECE</option>
+<option value="ME">ME</option>
+</select>
+
+<br>
+
+<button onclick="printStudents()">Print All Students</button>
+<button onclick="marksAbove80()">Marks > 80</button>
+<button onclick="cseStudents()">Only CSE Students</button>
+<button onclick="courseCount()">Student Count By Course</button>
+<button onclick="convertUpper()">Convert Names to Uppercase</button>
+
+<table id="studentTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Marks</th>
+<th>Course</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<div id="courseResult"></div>
+
+</div>
+
+<!-- Market Products -->
+
+<div class="container">
+
+<h2>Market Products</h2>
+
+<input type="text" id="productSearch" placeholder="Search product">
+<select id="categoryFilter">
+<option value="all">All Categories</option>
+<option value="Food">Food</option>
+<option value="Electronics">Electronics</option>
+<option value="Clothing">Clothing</option>
+</select>
+
+<br>
+
+<button onclick="showProducts()">Show Products</button>
+<button onclick="priceAbove500()">Price > 500</button>
+<button onclick="totalPrice()">Total Price</button>
+
+<table id="productTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Price</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<div id="totalResult"></div>
+
+</div>
+
+<script>
+
+let students=[
+{id:1,name:"Rahul",marks:85,course:"CSE"},
+{id:2,name:"Anita",marks:72,course:"ECE"},
+{id:3,name:"Karan",marks:90,course:"CSE"},
+{id:4,name:"Priya",marks:65,course:"ME"},
+{id:5,name:"Arjun",marks:88,course:"CSE"}
+]
+
+function clearStudentExtras(){
+document.getElementById("courseResult").innerHTML=""
+}
+
+function displayStudents(data){
+
+clearStudentExtras()
+
+let table=document.getElementById("studentTable")
+table.style.display="table"
+
+let rows=""
+
+data.forEach(s=>{
+rows+=`<tr>
+<td>${s.id}</td>
+<td>${s.name}</td>
+<td>${s.marks}</td>
+<td>${s.course}</td>
+</tr>`
+})
+
+document.querySelector("#studentTable tbody").innerHTML=rows
+}
+
+function printStudents(){
+displayStudents(students)
+}
+
+function marksAbove80(){
+let result=students.filter(s=>s.marks>80)
+displayStudents(result)
+}
+
+function cseStudents(){
+let result=students.filter(s=>s.course=="CSE")
+displayStudents(result)
+}
+
+function courseCount(){
+
+document.getElementById("studentTable").style.display="none"
+
+let count={}
+
+students.forEach(s=>{
+count[s.course]=(count[s.course]||0)+1
+})
+
+let text="Student Count By Course:<br>"
+
+for(let c in count){
+text+=c+" : "+count[c]+"<br>"
+}
+
+document.getElementById("courseResult").innerHTML=text
+}
+
+function convertUpper(){
+
+students=students.map(s=>{
+return {...s,name:s.name.toUpperCase()}
+})
+
+displayStudents(students)
+}
+
+document.getElementById("studentSearch").addEventListener("keyup",filterStudents)
+document.getElementById("courseFilter").addEventListener("change",filterStudents)
+
+function filterStudents(){
+
+let search=document.getElementById("studentSearch").value.toLowerCase()
+let course=document.getElementById("courseFilter").value
+
+let result=students.filter(s=>{
+return s.name.toLowerCase().includes(search) &&
+(course=="all"||s.course==course)
+})
+
+displayStudents(result)
+}
+
+let products=[
+{id:1,name:"Laptop",price:50000,category:"Electronics"},
+{id:2,name:"Mobile",price:20000,category:"Electronics"},
+{id:3,name:"Headphones",price:1500,category:"Electronics"},
+{id:4,name:"Rice",price:1200,category:"Food"},
+{id:5,name:"Milk",price:60,category:"Food"},
+{id:6,name:"Bread",price:40,category:"Food"},
+{id:7,name:"Tshirt",price:800,category:"Clothing"},
+{id:8,name:"Jeans",price:1500,category:"Clothing"},
+{id:9,name:"Jacket",price:2500,category:"Clothing"}
+]
+
+function clearProductExtras(){
+document.getElementById("totalResult").innerHTML=""
+}
+
+function displayProducts(data){
+
+clearProductExtras()
+
+let table=document.getElementById("productTable")
+table.style.display="table"
+
+let rows=""
+
+data.forEach(p=>{
+rows+=`<tr>
+<td>${p.id}</td>
+<td>${p.name}</td>
+<td>${p.price}</td>
+<td>${p.category}</td>
+</tr>`
+})
+
+document.querySelector("#productTable tbody").innerHTML=rows
+}
+
+function showProducts(){
+displayProducts(products)
+}
+
+function priceAbove500(){
+let result=products.filter(p=>p.price>500)
+displayProducts(result)
+}
+
+function totalPrice(){
+
+document.getElementById("productTable").style.display="none"
+
+let total=products.reduce((sum,p)=>sum+p.price,0)
+
+document.getElementById("totalResult").innerHTML="Total Price: ₹"+total
+}
+
+document.getElementById("productSearch").addEventListener("keyup",filterProducts)
+document.getElementById("categoryFilter").addEventListener("change",filterProducts)
+
+function filterProducts(){
+
+let search=document.getElementById("productSearch").value.toLowerCase()
+let cat=document.getElementById("categoryFilter").value
+
+let result=products.filter(p=>{
+return p.name.toLowerCase().includes(search) &&
+(cat=="all"||p.category==cat)
+})
+
+displayProducts(result)
+}
+
+</script>
+
+</body>
+</html>
